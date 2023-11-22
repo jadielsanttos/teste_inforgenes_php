@@ -33,8 +33,7 @@ class ConexaoMySQL {
 
     private object $db;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->db = $this->getDb();
     }
 
