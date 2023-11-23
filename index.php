@@ -50,7 +50,7 @@ $tasksList = $data['info']
                         </div>
                         <div class="modal_card_task" data-id="<?=$task['id'];?>">
                             <div class="modal_item"><a href="update.php?id=<?=$task['id'];?>">Editar</a></div>
-                            <div class="modal_item"><a href="delete.php?id=<?=$task['id'];?>">Deletar</a></div>
+                            <div class="modal_item"><a href="delete.php?id=<?=$task['id'];?>" onclick="return confirm('Deseja excluir este item?')">Deletar</a></div>
                         </div>
                     </div>
                 <?php endforeach ?>

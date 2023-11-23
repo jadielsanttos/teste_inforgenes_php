@@ -1,0 +1,7 @@
+// adicionar update (ok)
+
+// colocar text area no lugar do input (DESCRIÇÃO)
+
+// Deixar o layout responsivo
+
+// Fazer validação dos formulários

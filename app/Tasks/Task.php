@@ -44,6 +44,30 @@ class Task {
     }
 
     /**
+     * Método responsável por buscar dados de uma tarefa específica
+     * @param string (id)
+     * @return array
+     */
+    public function findTaskById($id) {
+        $array = [];
+
+        $query = "SELECT * FROM ".self::TABLE." WHERE id = :id";
+        $stmt = $this->pdo->getDb()->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        if($stmt->rowCount() == 0) {
+            header('location: index.php');
+            exit;
+        }
+
+        $array['task'] = $stmt->fetch();
+
+        return $array;
+
+    }
+
+    /**
      * Método responsável por criar uma nova tarefa
      * @param string (title)
      * @param string (description)
@@ -64,5 +88,40 @@ class Task {
         }
     }
 
+    /**
+     * Método responsável por atualizar uma tarefa
+     * @param string (id)
+     * @param string (title)
+     * @param string (description)
+     */
+    public function update($id, $title, $description) {
+
+        if($title && $description) {
+
+            $query = "UPDATE ".self::TABLE." SET title = :title, 
+            description = :description WHERE id = :id";
+            
+            $stmt = $this->pdo->getDb()->prepare($query);
+            $stmt->bindValue(':title', $title);
+            $stmt->bindValue(':description', $description);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+        }
+
+        header('location: update.php?id='.$id);
+        exit;
+
+    }
+
+    /**
+     * Método responsável por excluir uma tarefa
+     * @param string (id)
+     */
+    public function delete($id) {
+        $query = "DELETE FROM ".self::TABLE." WHERE id = :id";
+        $stmt = $this->pdo->getDb()->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
 
 }

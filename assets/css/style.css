@@ -73,6 +73,10 @@ html, body {
 }
 
 .section_main .area_tasks_list .card_task_item .task_title .title h2 {
+    width: 210px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     font-weight: 400;
     font-size: 20px;
     color: #333;
@@ -137,12 +141,12 @@ html, body {
     color: dodgerblue;
 }
 
-/* create task page */
-.section_add_task .area_title_page {
+/* css form page */
+.section_form_task .area_title_page {
     width: 100%;
 }
 
-.section_add_task .area_title_page .btn_back a {
+.section_form_task .area_title_page .btn_back a {
     width: 50px;
     display: block;
     text-decoration: none;
@@ -156,7 +160,7 @@ html, body {
     margin-bottom: 40px;
 }
 
-.section_add_task .area_form {
+.section_form_task .area_form {
     width: 100%;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -165,7 +169,7 @@ html, body {
     margin-top: 40px;
 }
 
-.section_add_task .area_form form .row_input input[type="text"] {
+.section_form_task .area_form form .row_input input[type="text"] {
     width: 100%;
     border: 1px solid #ccc;
     outline: 0;
@@ -175,7 +179,7 @@ html, body {
     font-size: 16px;
 }
 
-.section_add_task .area_form form .row_input_submit input[type="submit"] {
+.section_form_task .area_form form .row_input_submit input[type="submit"] {
     background-color: #000;
     color: #fff;
     border: 0;

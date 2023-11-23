@@ -1,3 +1,24 @@
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use App\Tasks\Task;
+
+$task = new Task();
+
+$taskID = filter_input(INPUT_GET, 'id');
+
+$data = $task->findTaskById($taskID);
+
+if(isset($taskID) && !empty($taskID)) {
+    $taskData = $data['task'];
+}else {
+    header('location: index.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
