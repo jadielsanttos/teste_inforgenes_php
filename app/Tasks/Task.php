@@ -25,6 +25,10 @@ class Task {
         $this->pdo = new ConexaoMySQL();
     }
 
+    /**
+     * Método responsável por listar as tarefas
+     * @return array
+     */
     public function read() {
         $array = [];
 
@@ -33,10 +37,31 @@ class Task {
         $stmt->execute();
 
         if($stmt->rowCount() > 0) {
-            $array['data'] = $stmt->fetchAll();
+            $array['info'] = $stmt->fetchAll();
         }
 
         return $array;
+    }
+
+    /**
+     * Método responsável por criar uma nova tarefa
+     * @param string (title)
+     * @param string (description)
+     */
+    public function create($title, $description) {
+        if($title && $description) {
+
+            $query = "INSERT INTO ".self::TABLE." (title, description) VALUES (?,?)";
+            $stmt = $this->pdo->getDb()->prepare($query);
+            $stmt->execute(array($title,$description));
+
+            header('location: index.php');
+            exit;
+
+        }else {
+            header('location: create.php');
+            exit;
+        }
     }
 
 

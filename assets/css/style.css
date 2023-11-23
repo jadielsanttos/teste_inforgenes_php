@@ -56,6 +56,7 @@ html, body {
 }
 
 .section_main .area_tasks_list .card_task_item {
+    position: relative;
     width: 290px;
     border: 1px solid #ccc;
     background-color: #fff;
@@ -84,9 +85,41 @@ html, body {
 }
 
 .section_main .area_tasks_list .card_task_item .task_description p {
+    width: 270px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     font-size: 15px;
     color: #333;
     margin-top: 10px;
+}
+
+.section_main .area_tasks_list .card_task_item .modal_card_task {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 99;
+    width: 110px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.3);
+}
+
+.section_main .area_tasks_list .card_task_item .modal_card_task .modal_item a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    border-radius: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    transition: .3s;
+}
+
+.section_main .area_tasks_list .card_task_item .modal_card_task .modal_item a:hover {
+    background-color: #eee;
 }
 
 .section_main .area_no_results {

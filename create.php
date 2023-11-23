@@ -1,13 +1,3 @@
-<?php
-
-require __DIR__.'/vendor/autoload.php';
-
-use App\Tasks\Task;
-
-$task = new Task();
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -30,17 +20,17 @@ $task = new Task();
         </div>
 
         <div class="area_form">
-            <form method="post">
+            <form action="create_action.php" method="post">
                 <div class="row_input">
                     <label for="Titulo">Titulo</label>
-                    <input type="text" name="title" placeholder="Título da tarefa">
+                    <input type="text" name="title" placeholder="Título da tarefa" autocomplete="off">
                 </div>
                 <div class="row_input">
                     <label for="Descrição">Descrição</label>
-                    <input type="text" name="description" placeholder="Descrição da tarefa">
+                    <input type="text" name="description" placeholder="Descrição da tarefa" autocomplete="off">
                 </div>
                 <div class="row_input_submit">
-                    <input type="submit" value="Adicionar">
+                    <input type="submit" value="Adicionar" name="Adicionar">
                 </div>
             </form>
         </div>

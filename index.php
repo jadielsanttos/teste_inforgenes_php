@@ -6,7 +6,9 @@ use App\Tasks\Task;
 
 $task = new Task();
 
-$tasksList = $task->read();
+$data = $task->read();
+
+$tasksList = $data['info']
 
 ?>
 
@@ -33,19 +35,25 @@ $tasksList = $task->read();
 
         <?php if(isset($tasksList) && !empty($tasksList)): ?>
             <div class="area_tasks_list">
-                <div class="card_task_item">
-                    <div class="task_title">
-                        <div class="title">
-                            <h2>Tarefa de teste</h2>
+                <?php foreach($tasksList as $task): ?>
+                    <div class="card_task_item" data-id="<?=$task['id'];?>">
+                        <div class="task_title">
+                            <div class="title">
+                                <h2><?=$task['title'];?></h2>
+                            </div>
+                            <div class="btn_open_modal_actions">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
                         </div>
-                        <div class="btn_open_modal_actions">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <div class="task_description">
+                            <p><?=$task['description'];?></p>
+                        </div>
+                        <div class="modal_card_task" data-id="<?=$task['id'];?>">
+                            <div class="modal_item"><a href="update.php?id=<?=$task['id'];?>">Editar</a></div>
+                            <div class="modal_item"><a href="delete.php?id=<?=$task['id'];?>">Deletar</a></div>
                         </div>
                     </div>
-                    <div class="task_description">
-                        <p>Descrição de exemplo...</p>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
         <?php else: ?>
             <div class="area_no_results">
@@ -54,6 +62,7 @@ $tasksList = $task->read();
         <?php endif ?>
     </section>
 
+    <script src="assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/e3dc242dae.js" crossorigin="anonymous"></script>
 </body>
 </html>
