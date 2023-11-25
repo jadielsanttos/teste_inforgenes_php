@@ -1,7 +1,11 @@
 // adicionar update (ok)
 
-// colocar text area no lugar do input (DESCRIÇÃO)
+// Deixar o layout responsivo (ok)
 
-// Deixar o layout responsivo
+// Trocar input por textarea para DESCRIÇÃO da tarefa (ok)
+
+// Atualizar status da tarefa após clique no checkbox
+
+// Fazer filtragem pelo status
 
 // Fazer validação dos formulários

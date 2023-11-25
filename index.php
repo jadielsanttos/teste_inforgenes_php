@@ -23,30 +23,39 @@ $tasksList = $data['info']
 </head>
 <body>
 
+    <!-- header -->
+    <?php require __DIR__.'/partials/header.php'; ?>
+
+    <!-- Resto do site -->
     <section class="section_main container">
-        <div class="area_top">
-            <div class="area_title_page">
-                <h1 class="title_page_h1">Listagem de tarefas</h1>
-            </div>
-            <div class="btn_add_task">
-                <a href="create.php">Nova tarefa</a>
-            </div>
+        <div class="area_filter">
+            <select name="status">
+                <option>Todas as tarefas</option>
+            </select>
         </div>
 
         <?php if(isset($tasksList) && !empty($tasksList)): ?>
             <div class="area_tasks_list">
                 <?php foreach($tasksList as $task): ?>
                     <div class="card_task_item" data-id="<?=$task['id'];?>">
-                        <div class="task_title">
+                        <div class="left_side">
+                            <div class="area_checkbox">
+                                <input type="checkbox" name="status">
+                            </div>
                             <div class="title">
                                 <h2><?=$task['title'];?></h2>
                             </div>
-                            <div class="btn_open_modal_actions">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                        <div class="middle">
+                            <div class="circle_status_task pending"></div>
+                            <div class="text_status_task">
+                                <p>Pendente</p>
                             </div>
                         </div>
-                        <div class="task_description">
-                            <p><?=$task['description'];?></p>
+                        <div class="right_side">
+                            <div class="btn_open_modal_actions">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
                         </div>
                         <div class="modal_card_task" data-id="<?=$task['id'];?>">
                             <div class="modal_item"><a href="update.php?id=<?=$task['id'];?>">Editar</a></div>

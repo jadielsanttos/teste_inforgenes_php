@@ -29,7 +29,13 @@ if(isset($taskID) && !empty($taskID)) {
     <title><?=(isset($taskData) ? 'Editar' : 'Nova')?> tarefa</title>
 </head>
 <body>
+    <!-- header -->
+    <?php require __DIR__.'/partials/header.php'; ?>
+
+    <!-- Resto do site -->
     <?php require __DIR__.'/partials/page_form.php'; ?>
+
+    <script src="assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/e3dc242dae.js" crossorigin="anonymous"></script>
 </body>
 </html>

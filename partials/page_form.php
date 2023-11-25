@@ -4,7 +4,7 @@
             <a href="index.php"><i class="fa-solid fa-arrow-left"></i></a>
         </div>
         <div class="title_box">
-            <h1 class="title_page_h1"><?=(isset($taskData) ? 'Editar' : 'Nova' )?> tarefa</h1>
+            <h1 class="title_page_h1"><?=(isset($taskData) ? 'Editar' : 'Adicionar' )?></h1>
         </div>
     </div>
 
@@ -17,7 +17,7 @@
             </div>
             <div class="row_input">
                 <label for="Descrição">Descrição</label>
-                <input type="text" name="description" placeholder="Descrição da tarefa" value="<?=(isset($taskData) ? $taskData['description'] : '' )?>" autocomplete="off">
+                <textarea name="description" rows="5" placeholder="Descrição da tarefa" autocomplete="off"><?=(isset($taskData) ? $taskData['description'] : '')?></textarea>
             </div>
             <div class="row_input_submit">
                 <input type="submit" value="<?=(isset($taskData) ? 'Atualizar' : 'Adicionar')?>">

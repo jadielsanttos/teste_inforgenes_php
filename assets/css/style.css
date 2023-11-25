@@ -10,7 +10,6 @@
 html, body {
     width: 100%;
     height: 100%;
-    background-color: #eee;
 }
 
 /* css reuseable */
@@ -21,7 +20,6 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 50px;
 }
 
 .title_page_h1 {
@@ -29,73 +27,109 @@ html, body {
     font-size: 30px;
 }
 
-/* initial page */
-.section_main .area_top {
+.pending {
+    background-color: #EB3B3B;
+}
+
+.done {
+    background-color: #56E264;
+}
+
+/* Header */
+header {
     width: 100%;
+}
+
+header .area_header {
+    max-width: 900px;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.section_main .area_top .btn_add_task a {
+header .area_header .btn_add_task a {
     text-decoration: none;
-    color: #000;
-    background-color: #fff;
+    color: #fff;
+    background-color: #7B5CF9;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
     border-radius: 10px;
-    border: 1px solid #ccc;
     padding: 7px 12px;
-    font-size: 17px;
+    font-size: 15px;
+}
+
+/* Initial page */
+.section_main .area_filter {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.section_main .area_filter select {
+    border: 0;
+    color: #333;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .section_main .area_tasks_list {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 290px);
-    gap: 10px;
-    padding: 40px 0;
 }
 
 .section_main .area_tasks_list .card_task_item {
     position: relative;
-    width: 290px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 15px 10px;
-}
-
-.section_main .area_tasks_list .card_task_item .task_title {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    background-color: #fff;
+    padding: 15px 10px;
+    transition: .3s;
 }
 
-.section_main .area_tasks_list .card_task_item .task_title .title h2 {
+.section_main .area_tasks_list .card_task_item:hover {
+    background-color: #eee;
+}
+
+.section_main .area_tasks_list .card_task_item .left_side {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.section_main .area_tasks_list .card_task_item .left_side .title h2 {
     width: 210px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     font-weight: 400;
-    font-size: 20px;
-    color: #333;
+    font-size: 17px;
 }
 
-.section_main .area_tasks_list .card_task_item .task_title .btn_open_modal_actions {
-    padding: 5px;
+.section_main .area_tasks_list .card_task_item .middle {
+    width: 210px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.section_main .area_tasks_list .card_task_item .middle .circle_status_task {
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+}
+
+.section_main .area_tasks_list .card_task_item .middle .text_status_task p {
+    font-size: 17px;
+}
+
+.section_main .area_tasks_list .card_task_item .right_side {
+    padding: 10px 0 10px 10px;
     font-size: 17px;
     cursor: pointer;
-}
-
-.section_main .area_tasks_list .card_task_item .task_description p {
-    width: 270px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 15px;
-    color: #333;
-    margin-top: 10px;
 }
 
 .section_main .area_tasks_list .card_task_item .modal_card_task {
@@ -109,7 +143,7 @@ html, body {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
 }
 
 .section_main .area_tasks_list .card_task_item .modal_card_task .modal_item a {
@@ -144,6 +178,7 @@ html, body {
 /* css form page */
 .section_form_task .area_title_page {
     width: 100%;
+    padding-top: 30px;
 }
 
 .section_form_task .area_title_page .btn_back a {
@@ -151,12 +186,13 @@ html, body {
     display: block;
     text-decoration: none;
     text-align: center;
-    color: #000;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    color: #7B5CF9;
+    background-color: transparent;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+    border: 2px solid #7B5CF9;
     border-radius: 10px;
     padding: 5px 10px;
-    font-size: 17px;
+    font-size: 15px;
     margin-bottom: 40px;
 }
 
@@ -166,10 +202,11 @@ html, body {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px 15px;
-    margin-top: 40px;
+    margin: 40px 0;
 }
 
-.section_form_task .area_form form .row_input input[type="text"] {
+.section_form_task .area_form form .row_input input[type="text"], 
+.section_form_task .area_form form .row_input textarea {
     width: 100%;
     border: 1px solid #ccc;
     outline: 0;
@@ -180,12 +217,48 @@ html, body {
 }
 
 .section_form_task .area_form form .row_input_submit input[type="submit"] {
-    background-color: #000;
+    background-color: #7B5CF9;
     color: #fff;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
     border: 0;
     border-radius: 10px;
     font-size: 15px;
     cursor: pointer;
     padding: 7px 12px;
     margin-top: 10px;
+}
+
+/* Medias */
+@media (max-width: 768px) {
+    header .area_header, .container {
+        max-width: none;
+        margin: 0 30px;
+    }
+}
+
+@media (max-width: 570px) {
+    .section_main .area_tasks_list .card_task_item .middle {
+        display: none;
+    }
+}
+
+@media (max-width: 425px) {
+    .title_page_h1 {
+        font-size: 25px;
+    }
+    .section_main .area_tasks_list .card_task_item .left_side .title h2 {
+        font-size: 15px;
+    }
+    .section_form_task .area_form form .row_input input[type="text"] {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    header .area_header, .container {
+        margin: 0 20px;
+    }
+    .section_main .area_tasks_list .card_task_item .left_side .title h2 {
+        width: 170px;
+    }
 }
