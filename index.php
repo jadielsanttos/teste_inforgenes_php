@@ -29,15 +29,17 @@ $tasksList = $data['info']
     <!-- Resto do site -->
     <section class="section_main container">
         <div class="area_filter">
-            <select name="status">
-                <option>Todas as tarefas</option>
+            <select name="status" onchange="filterTasks(this)">
+                <option value="all_tasks">Todas as tarefas</option>
+                <option value="done_tasks">Concluídas</option>
+                <option value="pending_tasks">Pendentes</option>
             </select>
         </div>
 
         <?php if(isset($tasksList) && !empty($tasksList)): ?>
             <div class="area_tasks_list">
                 <?php foreach($tasksList as $task): ?>
-                    <div class="card_task_item" data-id="<?=$task['id'];?>">
+                    <div class="card_task_item <?=($task['status'] == 0 ? 'pending_task' : 'done_task')?>" data-id="<?=$task['id'];?>">
                         <div class="left_side">
                             <div class="area_checkbox">
                                 <input type="checkbox" name="status" 
@@ -73,7 +75,56 @@ $tasksList = $data['info']
                 <span>Não há tarefas no momento, <a href="create.php">criar tarefa</a></span>
             </div>
         <?php endif ?>
+
+        <div class="area_no_results_filtered">
+            <span>Não há tarefas a serem exibidas aqui...</span>
+        </div>
     </section>
+
+    <script>
+        const doneTasks = document.querySelectorAll('.done_task')
+        const pendingTasks = document.querySelectorAll('.pending_task')
+        const areaNoResultFiltered = document.querySelector('.area_no_results_filtered')
+
+        function filterTasks(element) {
+           
+            if(element.value == 'done_tasks') {
+                showAllTasks()
+
+                verifyCountTasks(doneTasks)
+
+                pendingTasks.forEach((item) => {
+                    item.style.display = 'none'
+                })
+            }else if(element.value == 'pending_tasks') {
+                showAllTasks()
+
+                verifyCountTasks(pendingTasks)
+
+                doneTasks.forEach((item) => {
+                    item.style.display = 'none'
+                })
+            }else {
+                showAllTasks()
+
+                areaNoResultFiltered.style.display = 'none'
+            }
+        }
+
+        function showAllTasks() {
+            document.querySelectorAll('.card_task_item').forEach((item) => {
+                item.style.display = 'flex'
+            })
+        }
+
+        function verifyCountTasks(tasks) {
+            if(tasks.length == 0) {
+                areaNoResultFiltered.style.display = 'block'
+            }else {
+                areaNoResultFiltered.style.display = 'none'
+            }
+        }
+    </script>        
 
     <script src="assets/js/request.js"></script>
     <script src="assets/js/script.js"></script>
