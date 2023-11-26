@@ -114,6 +114,34 @@ class Task {
     }
 
     /**
+     * Método responsável por atualizar o status de uma tarefa específica
+     * @param boolean (status)
+     * @param integer (id)
+     */
+    public function updateTaskStatus($status, $taskID) {
+
+        if($status && $taskID) {
+
+            $newStatus = '';
+            
+            switch($status) {
+                case 'false':
+                    $newStatus = 0;
+                    break;
+                case 'true':
+                    $newStatus = 1;
+                    break;
+            }
+
+            $query = "UPDATE ".self::TABLE." SET status = :status WHERE id = :id";
+            $stmt = $this->pdo->getDb()->prepare($query);
+            $stmt->bindValue(':status', $newStatus);
+            $stmt->bindValue(':id', $taskID);
+            $stmt->execute();
+        }
+    }
+
+    /**
      * Método responsável por excluir uma tarefa
      * @param string (id)
      */

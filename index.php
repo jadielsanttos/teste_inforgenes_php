@@ -40,16 +40,20 @@ $tasksList = $data['info']
                     <div class="card_task_item" data-id="<?=$task['id'];?>">
                         <div class="left_side">
                             <div class="area_checkbox">
-                                <input type="checkbox" name="status">
+                                <input type="checkbox" name="status" 
+                                    data-id="<?=$task['id']?>"
+                                    onchange="updateTaskStatus(this)"
+                                    <?=($task['status'] == 1 ? 'checked' : '')?>
+                                >
                             </div>
                             <div class="title">
                                 <h2><?=$task['title'];?></h2>
                             </div>
                         </div>
                         <div class="middle">
-                            <div class="circle_status_task pending"></div>
+                            <div class="circle_status_task <?=($task['status'] == 0 ? 'pending' : 'done')?>"></div>
                             <div class="text_status_task">
-                                <p>Pendente</p>
+                                <p><?=($task['status'] == 0 ? 'Pendente' : 'Concluída')?></p>
                             </div>
                         </div>
                         <div class="right_side">
@@ -71,6 +75,7 @@ $tasksList = $data['info']
         <?php endif ?>
     </section>
 
+    <script src="assets/js/request.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/e3dc242dae.js" crossorigin="anonymous"></script>
 </body>
