@@ -13,10 +13,16 @@ class Task {
     const TABLE = 'tasks';
 
     /**
+     * URL base do projeto
+     * @var string (base)
+     */
+    public $base = 'http://localhost/teste_inforgeneses_php';
+
+    /**
      * Objeto pdo
      * @var object (pdo)
      */
-    private object $pdo;
+    private $pdo;
 
     /**
      * Método responsável por instanciar a classe de conexao com o banco de dados
@@ -57,7 +63,7 @@ class Task {
         $stmt->execute();
 
         if($stmt->rowCount() == 0) {
-            header('location: index.php');
+            header('location: '.$this->base);
             exit;
         }
 
@@ -80,11 +86,14 @@ class Task {
             $stmt = $this->pdo->getDb()->prepare($query);
             $stmt->execute(array($title,$description));
 
-            header('location: index.php');
+            header('location: '.$this->base);
             exit;
 
         }else {
-            header('location: create.php');
+
+            $_SESSION['flash'] = ['success' => '', 'error' => 'Preencha todos os campos !'];
+
+            header('location: '.$this->base.'/create.php');
             exit;
         }
     }
@@ -107,9 +116,20 @@ class Task {
             $stmt->bindValue(':description', $description);
             $stmt->bindValue(':id', $id);
             $stmt->execute();
+
+            $_SESSION['flash'] = [
+                'success' => 'Tarefa atualizada com sucesso',
+                'error' => ''
+            ];
+
+        }else {
+            $_SESSION['flash'] = [
+                'success' => '',
+                'error' => 'Preencha todos os campos !'
+            ];
         }
 
-        header('location: update.php?id='.$id);
+        header('location: '.$this->base.'/update.php?id='.$id);
         exit;
 
     }

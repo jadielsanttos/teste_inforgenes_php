@@ -1,7 +1,21 @@
 <section class="section_form_task container">
+    <?php if(isset($_SESSION['flash']['error']) && !empty($_SESSION['flash']['error'])): ?>
+        <div class="flash error">
+            <?=$_SESSION['flash']['error']?>
+            <?php $_SESSION['flash']['error'] = ''?>
+        </div>
+    <?php endif ?>    
+
+    <?php if(isset($_SESSION['flash']['success']) && !empty($_SESSION['flash']['success'])): ?>
+        <div class="flash success">
+            <?=$_SESSION['flash']['success']?>
+            <?php $_SESSION['flash']['success'] = ''?>
+        </div>
+    <?php endif ?>
+
     <div class="area_title_page">
         <div class="btn_back">
-            <a href="index.php"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="<?=$base?>"><i class="fa-solid fa-arrow-left"></i></a>
         </div>
         <div class="title_box">
             <h1 class="title_page_h1"><?=(isset($taskData) ? 'Editar' : 'Adicionar' )?></h1>

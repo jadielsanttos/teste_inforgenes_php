@@ -2,6 +2,8 @@
 
 namespace App\DB;
 
+session_start();
+
 use PDOException;
 use PDO;
 

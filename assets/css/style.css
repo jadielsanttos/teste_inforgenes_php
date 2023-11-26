@@ -35,6 +35,22 @@ html, body {
     background-color: #56E264;
 }
 
+.flash {
+    width: 100%;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.error {
+    background-color: #dd8c8c;
+}
+
+.success {
+    background-color: #7dcf7d;
+}
+
 /* Header */
 header {
     width: 100%;
@@ -61,6 +77,10 @@ header .area_header .btn_add_task a {
 }
 
 /* Initial page */
+.section_main {
+    padding-bottom: 50px;
+}
+
 .section_main .area_filter {
     width: 100%;
     padding: 20px 0;
@@ -163,7 +183,6 @@ header .area_header .btn_add_task a {
 
 .section_main .area_no_results {
     width: 100%;
-    padding-top: 40px;
 }
 
 .section_main .area_no_results span {
@@ -179,7 +198,6 @@ header .area_header .btn_add_task a {
 .section_main .area_no_results_filtered {
     display: none;
     width: 100%;
-    padding-top: 20px;
 }
 
 /* css form page */

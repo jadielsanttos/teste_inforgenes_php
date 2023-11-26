@@ -10,3 +10,4 @@ $title = filter_input(INPUT_POST, 'title');
 $description = filter_input(INPUT_POST, 'description');
 
 $task->create($title, $description);
+
