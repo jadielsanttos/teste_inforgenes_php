@@ -73,6 +73,7 @@ class Task {
      * @param string (description)
      */
     public function create($title, $description) {
+
         if($title && $description) {
 
             $query = "INSERT INTO ".self::TABLE." (title, description) VALUES (?,?)";

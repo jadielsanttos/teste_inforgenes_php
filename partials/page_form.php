@@ -9,7 +9,7 @@
     </div>
 
     <div class="area_form">
-        <form action="update_action.php" method="post">
+        <form action="<?=(isset($taskData) ? 'update_action.php' : 'create_action.php')?>" method="post">
             <input type="hidden" name="id" value="<?=(isset($taskData) ? $taskData['id'] : '')?>">
             <div class="row_input">
                 <label for="Titulo">Titulo</label>
