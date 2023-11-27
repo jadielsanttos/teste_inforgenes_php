@@ -1,6 +1,8 @@
 # Teste de Desenvolvimento Web - CRUD
 O teste consiste no desenvolvimento de uma lista de tarefas (TODO LIST) com as 4 operações fundamentais do banco de dados.
 
+<img src="assets/images/home.png">
+
 # Tecnologias utilizadas
 * PHP
 * MYSQL
@@ -36,12 +38,16 @@ O teste consiste no desenvolvimento de uma lista de tarefas (TODO LIST) com as 4
 
 ```bash
 git clone https://github.com/jadielsanttos/teste_inforgenes_php.git
+```
 
 # Navegue até a pasta do projeto
+
+```bash
 cd teste_inforgeneses_php
 ```
+
 ### 2 - Crie um banco de dados e altere as credenciais (DICA)
-* Vou deixar um arquivo SQL na estrutura do projeto, é só importar e pronto
+* Vou deixar um arquivo SQL na pasta DATABASE, é só importar e pronto
 
 * Configurações e conexão com o banco de dados ficam dentro da pasta app/DB/
 
